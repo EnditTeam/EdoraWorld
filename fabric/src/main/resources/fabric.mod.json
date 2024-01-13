@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "edoraworld",
+  "version": "${version}",
+  "name": "EdoraWorld",
+  "description": "A mod for an RPG experience in Minecraft across the World of Edora",
+  "authors": [
+    "Octanne",
+    "Jiogo18",
+    "simon511000",
+    "28Pollux28"
+  ],
+  "contact": {
+    "homepage": "https://edora.octanne.eu",
+    "sources": "https://github.com/Octanne/Edora"
+  },
+  "license": "MIT",
+  "icon": "assets/edoraworld/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "fr.endit.edoraworld.fabric.EdoraWorldFabric"
+    ]
+  },
+  "mixins": [
+    "edoraworld.mixins.json",
+    "edoraworld-common.mixins.json"
+  ],
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.20.4",
+    "architectury": ">=11.0.11"
+  }
+}
