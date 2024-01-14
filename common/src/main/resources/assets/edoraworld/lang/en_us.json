@@ -1,3 +1,5 @@
 {
-  "item.edoraworld.example_item": "Example Item"
+  "itemGroup.edoraworld.economy_tab": "Economy",
+
+  "item.edoraworld.pouch": "Pouch"
 }
