@@ -2,6 +2,10 @@ plugins {
     id "com.github.johnrengelman.shadow" version "7.1.2"
 }
 
+repositories {
+    maven { url "https://maven.neoforged.net/releases/" }
+}
+
 architectury {
     platformSetupLoomIde()
     neoForge {
@@ -18,7 +22,7 @@ configurations {
     shadowCommon // Don't use shadow from the shadow plugin since it *excludes* files.
     compileClasspath.extendsFrom common
     // https://discord.com/channels/792699517631594506/1183085737940361356/1188959519301189662
-    runtimeClasspath.extendsFrom common
+    // runtimeClasspath.extendsFrom common
     developmentNeoForge.extendsFrom common
 }
 

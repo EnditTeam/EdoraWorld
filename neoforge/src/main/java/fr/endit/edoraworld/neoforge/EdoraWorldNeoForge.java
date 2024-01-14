@@ -1,16 +1,11 @@
-package fr.endit.edoraworld.forge;
+package fr.endit.edoraworld.neoforge;
 
-import dev.architectury.platform.forge.EventBuses;
 import fr.endit.edoraworld.EdoraWorld;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.fml.common.Mod;
 
 @Mod(EdoraWorld.MOD_ID)
 public class EdoraWorldNeoForge {
     public EdoraWorldNeoForge() {
-        // Submit our event bus to let architectury register our content on the right
-        // time
-        EventBuses.registerModEventBus(EdoraWorld.MOD_ID, FMLJavaModLoadingContext.get().getModEventBus());
         EdoraWorld.init();
     }
 }
