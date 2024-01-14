@@ -14,7 +14,7 @@
     "homepage": "https://edora.octanne.eu",
     "sources": "https://github.com/Octanne/Edora"
   },
-  "license": "MIT",
+  "license": "CC BY-NC-SA 4.0",
   "icon": "assets/edoraworld/icon.png",
   "environment": "*",
   "entrypoints": {

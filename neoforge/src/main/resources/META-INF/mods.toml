@@ -1,7 +1,7 @@
 modLoader = "javafml"
-loaderVersion = "[49,)"
+loaderVersion = "[1,)"
 #issueTrackerURL = ""
-license = "Insert License Here"
+license = "CC BY-NC-SA 4.0"
 
 [[mods]]
 modId = "edoraworld"
@@ -15,21 +15,21 @@ A mod for an RPG experience in Minecraft across the World of Edora
 
 [[dependencies.edoraworld]]
 modId = "neoforge"
-mandatory = true
+type = "required"
 versionRange = "[20.4,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.edoraworld]]
 modId = "minecraft"
-mandatory = true
+type = "required"
 versionRange = "[1.20.4,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.edoraworld]]
 modId = "architectury"
-mandatory = true
+type = "required"
 versionRange = "[11.0.11,)"
 ordering = "AFTER"
 side = "BOTH"

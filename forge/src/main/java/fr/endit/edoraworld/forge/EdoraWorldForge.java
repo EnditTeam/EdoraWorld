@@ -8,7 +8,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(EdoraWorld.MOD_ID)
 public class EdoraWorldForge {
     public EdoraWorldForge() {
-        // Submit our event bus to let architectury register our content on the right time
+        // Submit our event bus to let architectury register our content on the right
+        // time
         EventBuses.registerModEventBus(EdoraWorld.MOD_ID, FMLJavaModLoadingContext.get().getModEventBus());
         EdoraWorld.init();
     }

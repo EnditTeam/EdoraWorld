@@ -9,7 +9,5 @@ public class EdoraWorld {
     public static void init() {
         EdoraWorldTabs.REGISTRY.register();
         EdoraWorldItems.REGISTRY.register();
-        
-        System.out.println(EdoraWorldExpectPlatform.getConfigDirectory().toAbsolutePath().normalize().toString());
     }
 }
