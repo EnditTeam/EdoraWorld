@@ -21,6 +21,12 @@ configurations {
 
 repositories {
     maven { url "https://maven.terraformersmc.com/releases/" }
+    maven {
+        name = "Fuzs Mod Resources"
+        url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
+    }
+
+    maven { url = "https://mvnrepository.com/artifact/com.h2database/h2" }
 }
 
 dependencies {
@@ -29,10 +35,17 @@ dependencies {
     // Remove the next line if you don't want to depend on the API
     modApi "dev.architectury:architectury-fabric:${rootProject.architectury_version}"
 
+    modApi "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${rootProject.forgeconfigscreens_version}"
+
     modCompileOnly("com.terraformersmc:modmenu:${rootProject.mod_menu_version}") { transitive false }
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
+
+    implementation 'org.hibernate.orm:hibernate-core:6.4.0.Final'
+    implementation "jakarta.transaction:jakarta.transaction-api"
+    implementation 'com.h2database:h2:2.1.214'
+    implementation 'com.mysql:mysql-connector-j:8.3.0'
 }
 
 processResources {

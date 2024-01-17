@@ -1,8 +1,13 @@
 package fr.endit.edoraworld.item;
 
+import dev.architectury.registry.menu.ExtendedMenuProvider;
+import dev.architectury.registry.menu.MenuRegistry;
 import fr.endit.edoraworld.item.properties.BackpackProperties;
 import fr.endit.edoraworld.menu.BackpackMenu;
+import fr.endit.edoraworld.registry.EdoraWorldMenuTypes;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
@@ -29,15 +34,15 @@ public class BackpackItem extends Item {
         backpackItemStack = player.getItemInHand(interactionHand);
 
         if (!level.isClientSide) {
-            player.openMenu(new MenuProvider() {
+            MenuRegistry.openMenu((ServerPlayer) player, new MenuProvider() {
                 @Override
-                public AbstractContainerMenu createMenu(int i, Inventory inventory, Player arg2) {
-                    return new BackpackMenu(i, inventory);
+                public Component getDisplayName() {
+                    return backpackItemStack.getDisplayName();
                 }
 
                 @Override
-                public Component getDisplayName() {
-                    return Component.translatable("meow");
+                public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
+                    return new BackpackMenu(i, inventory, backpackItemStack);
                 }
             });
         } else {

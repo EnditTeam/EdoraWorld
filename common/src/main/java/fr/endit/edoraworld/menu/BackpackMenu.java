@@ -1,10 +1,9 @@
 package fr.endit.edoraworld.menu;
 
-import fr.endit.edoraworld.menu.slot.BackpackSlot;
+import fr.endit.edoraworld.item.BackpackItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.TagType;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -18,17 +17,16 @@ public class BackpackMenu extends AbstractContainerMenu {
     private final ItemStack backpackItemStack;
     private SimpleContainer container;
 
-    public BackpackMenu(int i, Inventory inventory) {
-        this(i, inventory, (SimpleContainer) new SimpleContainer(27));
-    }
-
-    public BackpackMenu(int i, Inventory inventory, SimpleContainer container) {
+    public BackpackMenu(int i, Inventory inventory, ItemStack backpackItemStack) {
         super(MenuType.GENERIC_9x3, i);
 
-        this.container = container;
-        this.backpackItemStack = inventory.player.getMainHandItem();
+        this.backpackItemStack = backpackItemStack;
 
-        setupBackpack(inventory);
+        if (backpackItemStack.getItem() instanceof BackpackItem) {
+            setupBackpack(inventory);
+        } else {
+            this.removed(inventory.player);
+        }
     }
 
     private void setupBackpack(Inventory playerInventory) {
@@ -114,6 +112,17 @@ public class BackpackMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player player) {
         return this.container.stillValid(player);
+    }
+
+    private class BackpackSlot extends Slot {
+        public BackpackSlot(Container container, int i, int j, int k) {
+            super(container, i, j, k);
+        }
+
+        @Override
+        public boolean mayPlace(ItemStack itemStack) {
+            return !(itemStack.getItem() instanceof BackpackItem);
+        }
     }
 
 }

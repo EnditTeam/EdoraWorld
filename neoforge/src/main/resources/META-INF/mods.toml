@@ -33,3 +33,10 @@ type = "required"
 versionRange = "[11.0.11,)"
 ordering = "AFTER"
 side = "BOTH"
+
+[[dependencies.edoraworld]]
+modId = "forgeconfigapiport"
+type = "required"
+versionRange = "[20.4.2,)"
+ordering = "AFTER"
+side = "BOTH"
