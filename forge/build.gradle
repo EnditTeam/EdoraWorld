@@ -8,6 +8,7 @@ architectury {
 }
 
 repositories {
+    maven { url = "https://mvnrepository.com/artifact/com.h2database/h2" }
 }
 
 loom {
@@ -38,6 +39,13 @@ dependencies {
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
+
+    modImplementation('org.hibernate.orm:hibernate-core:6.0.0.Final') {
+        exclude group: 'net.bytebuddy', module: 'byte-buddy'
+    }
+    modImplementation 'jakarta.interceptor:jakarta.interceptor-api:2.1.0'
+    modImplementation 'jakarta.enterprise:jakarta.enterprise.cdi-api:4.0.1'
+    modImplementation 'com.h2database:h2:2.1.214'
 }
 
 processResources {

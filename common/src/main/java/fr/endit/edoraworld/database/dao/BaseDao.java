@@ -1,4 +1,4 @@
-package fr.endit.edoraworld.dao;
+package fr.endit.edoraworld.database.dao;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;

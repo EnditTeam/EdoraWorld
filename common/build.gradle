@@ -1,3 +1,7 @@
+plugins {
+    id "io.freefair.lombok" version "8.4"
+}
+
 architectury {
     common(rootProject.enabled_platforms.split(","))
 }
@@ -24,10 +28,10 @@ dependencies {
 
     api "fuzs.forgeconfigapiport:forgeconfigapiport-common-forgeapi:${rootProject.forgeconfigscreens_version}"
 
-    implementation 'org.hibernate.orm:hibernate-core:6.4.0.Final'
-    implementation "jakarta.transaction:jakarta.transaction-api"
-    implementation 'com.h2database:h2:2.1.214'
-    implementation 'com.mysql:mysql-connector-j:8.3.0'
+    modImplementation('org.hibernate.orm:hibernate-core:6.0.0.Final') {
+        exclude group: 'net.bytebuddy', module: 'byte-buddy'
+    }
+    modImplementation 'com.h2database:h2:2.1.214'
 }
 
 publishing {

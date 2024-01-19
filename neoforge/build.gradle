@@ -8,6 +8,8 @@ repositories {
         name = "Fuzs Mod Resources"
         url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
     }
+
+    maven { url = "https://mvnrepository.com/artifact/com.h2database/h2" }
 }
 
 architectury {
@@ -39,6 +41,12 @@ dependencies {
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive = false }
+
+    modImplementation('org.hibernate.orm:hibernate-core:6.0.0.Final') {
+        exclude group: 'net.bytebuddy', module: 'byte-buddy'
+    }
+
+    modImplementation 'com.h2database:h2:2.1.214'
 }
 
 processResources {
