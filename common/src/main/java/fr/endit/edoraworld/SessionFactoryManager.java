@@ -13,6 +13,8 @@ public class SessionFactoryManager {
 
     private SessionFactoryManager() {
 
+        System.out.println(org.h2.Driver.class.getTypeName());
+
         try {
             sessionFactory = new Configuration()
                     .setProperty(AvailableSettings.URL,
