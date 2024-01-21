@@ -3,7 +3,7 @@ package fr.endit.edoraworld.database.dao;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-import fr.endit.edoraworld.SessionFactoryManager;
+import fr.endit.edoraworld.database.SessionFactoryManager;
 
 public abstract class BaseDao<T> {
     // to tell the class actually which type of class you use.

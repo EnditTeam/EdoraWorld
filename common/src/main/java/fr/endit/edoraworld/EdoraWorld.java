@@ -10,6 +10,6 @@ public class EdoraWorld {
         EdoraWorldTabs.REGISTRY.register();
         EdoraWorldItems.REGISTRY.register();
 
-        SessionFactoryManager.getInstance();
+        EdoraWorldEventListener.register();
     }
 }

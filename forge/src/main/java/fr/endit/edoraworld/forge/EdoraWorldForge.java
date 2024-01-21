@@ -1,5 +1,7 @@
 package fr.endit.edoraworld.forge;
 
+import java.util.logging.LogManager;
+
 import dev.architectury.platform.forge.EventBuses;
 import fr.endit.edoraworld.ConfigurationHandler;
 import fr.endit.edoraworld.EdoraWorld;

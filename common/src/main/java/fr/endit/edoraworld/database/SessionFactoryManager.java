@@ -1,10 +1,12 @@
-package fr.endit.edoraworld;
+package fr.endit.edoraworld.database;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.cfg.Configuration;
 
 import dev.architectury.platform.Platform;
+import fr.endit.edoraworld.EdoraWorld;
+import fr.endit.edoraworld.database.entity.Player;
 
 public class SessionFactoryManager {
     private static SessionFactoryManager instance;
@@ -12,8 +14,6 @@ public class SessionFactoryManager {
     private SessionFactory sessionFactory;
 
     private SessionFactoryManager() {
-
-        System.out.println(org.h2.Driver.class.getTypeName());
 
         try {
             sessionFactory = new Configuration()
@@ -23,6 +23,8 @@ public class SessionFactoryManager {
                     .setProperty(AvailableSettings.DRIVER, org.h2.Driver.class.getTypeName())
                     .setProperty(AvailableSettings.HBM2DDL_AUTO, "update")
                     .setProperty(AvailableSettings.CURRENT_SESSION_CONTEXT_CLASS, "thread")
+
+                    .addAnnotatedClass(Player.class)
 
                     .buildSessionFactory();
 
