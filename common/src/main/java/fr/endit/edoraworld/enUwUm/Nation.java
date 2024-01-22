@@ -8,6 +8,7 @@ import net.minecraft.network.chat.Component;
 public enum Nation {
     Kawan("Kawan", "Loc'na'ko", "Dakara", Component.translatable("nations.edoraworld.kawan.description"));
     /*
+     * TODO: complete other nations
      * Othala("Othala"),
      * Druag("Druag"),
      * Hajim("Hajim");

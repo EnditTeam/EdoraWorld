@@ -1,9 +1,10 @@
 package fr.endit.edoraworld.menu;
 
+import org.apache.commons.lang3.NotImplementedException;
+
 import fr.endit.edoraworld.item.BackpackItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -18,7 +19,7 @@ public class BackpackMenu extends AbstractContainerMenu {
     private SimpleContainer container;
 
     public BackpackMenu(int i, Inventory inventory, ItemStack backpackItemStack) {
-        super(MenuType.GENERIC_9x3, i);
+        super(((BackpackItem) backpackItemStack.getItem()).getBProperties().getMenuType(), i);
 
         this.backpackItemStack = backpackItemStack;
 
@@ -41,20 +42,67 @@ public class BackpackMenu extends AbstractContainerMenu {
 
         fromTag(tag, container);
 
-        int l;
-        for (l = 0; l < 3; l++) {
-            for (int m = 0; m < 9; m++) {
-                addSlot(new BackpackSlot(container, m + l * 9, 8 + m * 18, 18 + l * 18));
-            }
-        }
+        var menuType = ((BackpackItem) backpackItemStack.getItem()).getBProperties().getMenuType();
 
-        for (l = 0; l < 3; l++) {
-            for (int m = 0; m < 9; m++) {
-                addSlot(new Slot((Container) playerInventory, m + l * 9 + 9, 8 + m * 18, 84 + l * 18));
+        if (menuType == MenuType.GENERIC_9x1) {
+            int l;
+            int c;
+            // Backpack inventory
+            for (l = 0; l < 3; ++l) {
+                for (c = 0; c < 3; ++c) {
+                    this.addSlot(new BackpackSlot(container, c + l * 3, 62 + c * 18, 17 + l * 18));
+                }
             }
-        }
-        for (l = 0; l < 9; l++) {
-            addSlot(new Slot((Container) playerInventory, l, 8 + l * 18, 142));
+            // Player inventory
+            for (l = 0; l < 3; ++l) {
+                for (c = 0; c < 9; ++c) {
+                    this.addSlot(new Slot(playerInventory, c + l * 9 + 9, 8 + c * 18, 84 + l * 18));
+                }
+            }
+            // Player Hotbar
+            for (c = 0; c < 9; ++c) {
+                this.addSlot(new Slot(playerInventory, c, 8 + c * 18, 142));
+            }
+        } else if (menuType == MenuType.GENERIC_9x3) {
+            int l;
+            int c;
+            // Backpack inventory
+            for (l = 0; l < 3; ++l) {
+                for (c = 0; c < 9; ++c) {
+                    this.addSlot(new BackpackSlot(container, c + l * 9, 8 + c * 18, 18 + l * 18));
+                }
+            }
+            // Player inventory
+            for (l = 0; l < 3; ++l) {
+                for (c = 0; c < 9; ++c) {
+                    this.addSlot(new Slot(playerInventory, c + l * 9 + 9, 8 + c * 18, 84 + l * 18));
+                }
+            }
+            // Player Hotbar
+            for (c = 0; c < 9; ++c) {
+                this.addSlot(new Slot(playerInventory, c, 8 + c * 18, 142));
+            }
+        } else if (menuType == MenuType.GENERIC_9x6) {
+            int l;
+            int c;
+            // Backpack inventory
+            for (l = 0; l < 6; ++l) {
+                for (c = 0; c < 9; ++c) {
+                    this.addSlot(new BackpackSlot(container, c + l * 9, 8 + c * 18, 18 + l * 18));
+                }
+            }
+            // Player Hotbar
+            for (l = 0; l < 3; ++l) {
+                for (c = 0; c < 9; ++c) {
+                    this.addSlot(new Slot(playerInventory, c + l * 9 + 9, 8 + c * 18, 140 + l * 18));
+                }
+            }
+            // Player Hotbar
+            for (c = 0; c < 9; ++c) {
+                this.addSlot(new Slot(playerInventory, c, 8 + c * 18, 198));
+            }
+        } else {
+            throw new NotImplementedException("Backpack menu for " + menuType.toString() + " menuType not implemented");
         }
     };
 

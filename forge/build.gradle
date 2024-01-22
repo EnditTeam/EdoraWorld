@@ -42,6 +42,7 @@ dependencies {
 
     forgeRuntimeLibrary 'org.hibernate.orm:hibernate-core:6.0.0.Final'
     forgeRuntimeLibrary 'com.h2database:h2:2.1.214'
+    forgeRuntimeLibrary 'com.google.inject:guice:7.0.0'
 }
 
 processResources {

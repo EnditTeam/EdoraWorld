@@ -1,14 +1,12 @@
 package fr.endit.edoraworld.item;
 
-import dev.architectury.registry.menu.ExtendedMenuProvider;
+import org.jetbrains.annotations.Nullable;
+
 import dev.architectury.registry.menu.MenuRegistry;
-import fr.endit.edoraworld.item.properties.BackpackProperties;
+import fr.endit.edoraworld.enUwUm.Nation;
 import fr.endit.edoraworld.menu.BackpackMenu;
-import fr.endit.edoraworld.registry.EdoraWorldMenuTypes;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -16,12 +14,15 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import lombok.*;
 
 public class BackpackItem extends Item {
-    private BackpackProperties bProperties;
+    @Getter
+    private final BackpackProperties bProperties;
     private ItemStack backpackItemStack;
 
     public BackpackItem(Properties properties, BackpackProperties bProperties) {
@@ -50,6 +51,15 @@ public class BackpackItem extends Item {
         }
 
         return InteractionResultHolder.pass(player.getMainHandItem());
+    }
+
+    @Data
+    public static class BackpackProperties {
+        @NonNull
+        private final MenuType<?> menuType;
+
+        @Nullable
+        private final Nation nation;
     }
 
 }

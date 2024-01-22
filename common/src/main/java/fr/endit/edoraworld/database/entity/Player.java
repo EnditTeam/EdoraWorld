@@ -2,10 +2,15 @@ package fr.endit.edoraworld.database.entity;
 
 import java.util.UUID;
 
+import org.jetbrains.annotations.Nullable;
+
 import fr.endit.edoraworld.database.converter.UUIDConverter;
+import fr.endit.edoraworld.enUwUm.Nation;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,4 +32,9 @@ public class Player {
     @Convert(converter = UUIDConverter.class)
     @Column
     private UUID uuid;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    @Nullable
+    private Nation nation;
 }

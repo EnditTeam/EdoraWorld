@@ -4,15 +4,17 @@ import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import fr.endit.edoraworld.EdoraWorld;
 import fr.endit.edoraworld.item.BackpackItem;
-import fr.endit.edoraworld.item.properties.BackpackProperties;
+import fr.endit.edoraworld.item.BackpackItem.BackpackProperties;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 
 public class EdoraWorldItems {
-    public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(EdoraWorld.MOD_ID, Registries.ITEM);
+        public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(EdoraWorld.MOD_ID,
+                        Registries.ITEM);
 
-    public static final RegistrySupplier<Item> POUCH = REGISTRY.register("pouch",
-            () -> new BackpackItem(new Item.Properties().arch$tab(EdoraWorldTabs.ECONOMY).stacksTo(1),
-                    new BackpackProperties(9)));
+        public static final RegistrySupplier<Item> POUCH = REGISTRY.register("pouch",
+                        () -> new BackpackItem(new Item.Properties().arch$tab(EdoraWorldTabs.ECONOMY).stacksTo(1),
+                                        new BackpackProperties(MenuType.GENERIC_9x1, null)));
 
 }

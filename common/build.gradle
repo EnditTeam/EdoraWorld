@@ -30,6 +30,7 @@ dependencies {
 
     modImplementation 'org.hibernate.orm:hibernate-core:6.0.0.Final'
     modImplementation 'com.h2database:h2:2.1.214'
+    modImplementation 'com.google.inject:guice:7.0.0'
 }
 
 publishing {
